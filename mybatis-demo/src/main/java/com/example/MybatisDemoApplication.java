@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.domain.Customers;
 import com.example.domain.Products;
 import com.example.mapper.ProductsMapper;
 
@@ -42,6 +43,13 @@ public class MybatisDemoApplication implements CommandLineRunner {
 		productsMapper.insert(ball);
 		productsMapper.insert(shoes);
 		
+		// customers
+		Customers akira = new Customers();
+		akira.setName("Akira Abe");
+		akira.setAddress("Chiba");
+		akira.setPhone("0120-999-999");
+		
+		// -- select --
 		Products retrievalData = productsMapper.select(products.getId());
 		System.out.println(retrievalData);
 		System.out.println("----");
