@@ -3,7 +3,7 @@ package com.example.domain;
 public class OrderDetails {
 	
 	private Integer id;
-	private Products product;
+	private Products products;
 	private Integer amount;
 	public Integer getId() {
 		return id;
@@ -11,11 +11,11 @@ public class OrderDetails {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Products getProduct() {
-		return product;
+	public Products getProducts() {
+		return products;
 	}
-	public void setProduct(Products product) {
-		this.product = product;
+	public void setProducts(Products products) {
+		this.products = products;
 	}
 	public Integer getAmount() {
 		return amount;
@@ -25,6 +25,6 @@ public class OrderDetails {
 	}
 	@Override
 	public String toString() {
-		return "OrderDetails [id=" + id + ", product=" + product + ", amount=" + amount + "]";
+		return "OrderDetails [id=" + id + ", products=" + products + ", amount=" + amount + "]";
 	}
 }

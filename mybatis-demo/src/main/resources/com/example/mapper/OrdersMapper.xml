@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.OrdersMapper">
+	<resultMap id="customersResult" type="com.example.domain.Customers">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+	</resultMap>
+	<resultMap id="productsResult" type="com.example.domain.Products">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="unitPrice" column="unitprice" />
+	</resultMap>
+	<resultMap id="ordersResult" type="com.example.domain.Orders">
+		<id property="id" column="id" />
+		<result property="orderDate" column="order_date" />
+		<association property="customer" resultMap="customersResult"
+			columnPrefix="cu_" />
+		<collection property="orderDetails" ofType="com.example.domain.OrderDetails">
+			<id property="id" column="order_details_id" />
+			<result property="amount" column="amount" />
+			<association property="products" resultMap="productsResult"
+			columnPrefix="pd_" />
+		</collection>
+
+	</resultMap>
+	<select id="selectOrder" resultMap="ordersResult">
+		SELECT
+		o.id
+		,o.order_date
+		,od.id          as order_details_id
+		,od.amount      as amount
+		,c.id           as cu_id
+		,c.name         as cu_name
+		,c.address      as cu_address
+		,c.phone        as cu_phone
+		,od.id          as order_details_id
+		,od.amount      as amount
+		,od.products_id as pd_id
+		,od.name        as pd_name
+		,od.unitprice   as pd_unitprice
+		FROM orders o
+		LEFT OUTER JOIN 
+		(
+		SELECT
+		d.id
+		,d.orders_id
+		,d.products_id
+		,p.name
+		,p.unitprice
+		,d.amount
+		FROM order_details d
+		LEFT OUTER JOIN products p
+		ON (p.id = d.products_id)
+		)  od
+		ON (o.id = od.orders_id)
+		LEFT OUTER JOIN customers c
+		ON (o.customers_id = c.id)
+		WHERE o.id = #{id}
+	</select>
+</mapper>

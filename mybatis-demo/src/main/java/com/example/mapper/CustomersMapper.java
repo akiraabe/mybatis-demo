@@ -12,14 +12,14 @@ import com.example.domain.Customers;
 @Mapper
 public interface CustomersMapper {
 	
-	@Insert("INSERT INTO customers (name, address, phone) VALUES (#{name}, #{address}, #{phone})")
-	@Options(useGeneratedKeys = true)
+//	@Insert("INSERT INTO customers (name, address, phone) VALUES (#{name}, #{address}, #{phone})")
+//	@Options(useGeneratedKeys = true)
 	void insert(Customers customers);
 	
-	@Select("SELECT id, name, address, phone FROM customers WHERE id = #{id}")
+//	@Select("SELECT id, name, address, phone FROM customers WHERE id = #{id}")
 	Customers select(Integer id);
 	
-	@Select("SELECT id, name, address, phone FROM customers")
+//	@Select("SELECT id, name, address, phone FROM customers")
 	List<Customers> findAll();
 
 }

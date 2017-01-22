@@ -8,8 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.Customers;
+import com.example.domain.Orders;
 import com.example.domain.Products;
 import com.example.mapper.CustomersMapper;
+import com.example.mapper.OrdersMapper;
 import com.example.mapper.ProductsMapper;
 
 @SpringBootApplication
@@ -21,11 +23,14 @@ public class MybatisDemoApplication implements CommandLineRunner {
 	
 	private final ProductsMapper productsMapper;
 	private final CustomersMapper customersMapper;
+	private final OrdersMapper ordersMapper;
 	
 	public MybatisDemoApplication(ProductsMapper productsMapper,
-			CustomersMapper customersMapper) {
+			CustomersMapper customersMapper,
+			OrdersMapper ordersMapper) {
 		this.productsMapper = productsMapper;
 		this.customersMapper = customersMapper;
+		this.ordersMapper = ordersMapper;
 	}
 	
 	@Transactional
@@ -64,5 +69,11 @@ public class MybatisDemoApplication implements CommandLineRunner {
 		
 		List<Customers> customersList = customersMapper.findAll();
 		customersList.forEach(System.out::println);
+		
+		System.out.println("----");
+		Orders order = ordersMapper.selectOrder(1);
+		System.out.println(order);
+		System.out.println("grossAmount : " + order.sumUp());
+		
 	}
 }

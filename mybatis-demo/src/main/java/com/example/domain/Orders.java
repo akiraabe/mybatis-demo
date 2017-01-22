@@ -1,10 +1,12 @@
 package com.example.domain;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Orders {
 	
 	private Integer id;
+	private Date orderDate;
 	private Customers customer;
 	private List<OrderDetails> orderDetails;
 	public Integer getId() {
@@ -12,6 +14,12 @@ public class Orders {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Date getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 	public Customers getCustomer() {
 		return customer;
@@ -25,8 +33,24 @@ public class Orders {
 	public void setOrderDetails(List<OrderDetails> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+	
+	/**
+	 * sumUp grossAmount.
+	 * sum(unitPrice * amount)
+	 * @return grossAmount
+	 */
+	public Integer sumUp() {
+		Integer grossAmount = 0;
+		for (OrderDetails detail : this.orderDetails) {
+			grossAmount += (detail.getAmount() * detail.getProducts().getUnitPrice());
+		}
+		return grossAmount;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Orders [id=" + id + ", customer=" + customer + ", orderDetails=" + orderDetails + "]";
+		return "Orders [id=" + id + ", orderDate=" + orderDate + ", customer=" + customer + ", orderDetails="
+				+ orderDetails + "]";
 	}
 }
