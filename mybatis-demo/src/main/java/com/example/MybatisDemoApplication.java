@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import com.example.domain.Products;
 import com.example.mapper.CustomersMapper;
 import com.example.mapper.OrdersMapper;
 import com.example.mapper.ProductsMapper;
+import com.example.service.OrdersService;
 
 @SpringBootApplication
 public class MybatisDemoApplication implements CommandLineRunner {
@@ -24,6 +26,9 @@ public class MybatisDemoApplication implements CommandLineRunner {
 	private final ProductsMapper productsMapper;
 	private final CustomersMapper customersMapper;
 	private final OrdersMapper ordersMapper;
+	
+	@Autowired
+	OrdersService ordersService;
 	
 	public MybatisDemoApplication(ProductsMapper productsMapper,
 			CustomersMapper customersMapper,
@@ -71,7 +76,8 @@ public class MybatisDemoApplication implements CommandLineRunner {
 		customersList.forEach(System.out::println);
 		
 		System.out.println("----");
-		Orders order = ordersMapper.selectOrder(1);
+		//Orders order = ordersMapper.selectOrder(1);
+		Orders order = ordersService.findOrdersById(1);
 		System.out.println(order);
 		System.out.println("grossAmount : " + order.sumUp());
 		
