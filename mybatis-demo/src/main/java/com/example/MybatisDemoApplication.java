@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.Customers;
 import com.example.domain.Products;
+import com.example.mapper.CustomersMapper;
 import com.example.mapper.ProductsMapper;
 
 @SpringBootApplication
@@ -19,9 +20,12 @@ public class MybatisDemoApplication implements CommandLineRunner {
 	}
 	
 	private final ProductsMapper productsMapper;
+	private final CustomersMapper customersMapper;
 	
-	public MybatisDemoApplication(ProductsMapper productsMapper) {
+	public MybatisDemoApplication(ProductsMapper productsMapper,
+			CustomersMapper customersMapper) {
 		this.productsMapper = productsMapper;
+		this.customersMapper = customersMapper;
 	}
 	
 	@Transactional
@@ -48,6 +52,7 @@ public class MybatisDemoApplication implements CommandLineRunner {
 		akira.setName("Akira Abe");
 		akira.setAddress("Chiba");
 		akira.setPhone("0120-999-999");
+		customersMapper.insert(akira);
 		
 		// -- select --
 		Products retrievalData = productsMapper.select(products.getId());
@@ -56,5 +61,8 @@ public class MybatisDemoApplication implements CommandLineRunner {
 		
 		List<Products> productsList = productsMapper.findAll();
 		productsList.forEach(System.out::println);
+		
+		List<Customers> customersList = customersMapper.findAll();
+		customersList.forEach(System.out::println);
 	}
 }

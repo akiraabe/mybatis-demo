@@ -12,7 +12,7 @@ import com.example.domain.Customers;
 @Mapper
 public interface CustomersMapper {
 	
-	@Insert("INSERT INTO customers (name, address, phone) VALUES (#{name}, #{unitPrice})")
+	@Insert("INSERT INTO customers (name, address, phone) VALUES (#{name}, #{address}, #{phone})")
 	@Options(useGeneratedKeys = true)
 	void insert(Customers customers);
 	
