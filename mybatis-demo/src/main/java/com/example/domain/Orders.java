@@ -1,13 +1,13 @@
 package com.example.domain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class Orders {
 
 	private Integer id;
 	private Date orderDate;
-	private Customers customer;
+	private Customers customers;
 	private List<OrderDetails> orderDetails;
 
 	/**
@@ -39,12 +39,12 @@ public class Orders {
 		this.orderDate = orderDate;
 	}
 
-	public Customers getCustomer() {
-		return customer;
+	public Customers getCustomers() {
+		return customers;
 	}
 
-	public void setCustomer(Customers customer) {
-		this.customer = customer;
+	public void setCustomers(Customers customers) {
+		this.customers = customers;
 	}
 
 	public List<OrderDetails> getOrderDetails() {
@@ -57,7 +57,7 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders [id=" + id + ", orderDate=" + orderDate + ", customer=" + customer + ", orderDetails="
+		return "Orders [id=" + id + ", orderDate=" + orderDate + ", customer=" + customers + ", orderDetails="
 				+ orderDetails + "]";
 	}
 }

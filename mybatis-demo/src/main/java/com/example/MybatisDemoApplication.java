@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,12 @@ public class MybatisDemoApplication implements CommandLineRunner {
 		akira.setAddress("Chiba");
 		akira.setPhone("0120-999-999");
 		customersMapper.insert(akira);
+		
+		// orders
+		Orders orders = new Orders();
+		orders.setCustomers(akira);
+		orders.setOrderDate(new Date());
+		ordersMapper.insert(orders);
 		
 		// -- select --
 		Products retrievalData = productsMapper.select(products.getId());

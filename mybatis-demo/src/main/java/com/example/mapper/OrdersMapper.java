@@ -8,5 +8,6 @@ import com.example.domain.Orders;
 public interface OrdersMapper {
 	
 	Orders selectOrder(Integer id);
+	void insert(Orders orders);
 
 }

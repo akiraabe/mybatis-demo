@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.OrdersMapper">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT
+		INTO orders (order_date, customers_id ) VALUES (#{orderDate},
+		#{customers.id}
+		)
+	</insert>
 	<resultMap id="customersResult" type="com.example.domain.Customers">
 		<id property="id" column="id" />
 		<result property="name" column="name" />
@@ -17,13 +23,13 @@
 	<resultMap id="ordersResult" type="com.example.domain.Orders">
 		<id property="id" column="id" />
 		<result property="orderDate" column="order_date" />
-		<association property="customer" resultMap="customersResult"
+		<association property="customers" resultMap="customersResult"
 			columnPrefix="cu_" />
 		<collection property="orderDetails" ofType="com.example.domain.OrderDetails">
 			<id property="id" column="order_details_id" />
 			<result property="amount" column="amount" />
 			<association property="products" resultMap="productsResult"
-			columnPrefix="pd_" />
+				columnPrefix="pd_" />
 		</collection>
 
 	</resultMap>
@@ -31,19 +37,22 @@
 		SELECT
 		o.id
 		,o.order_date
-		,od.id          as order_details_id
-		,od.amount      as amount
-		,c.id           as cu_id
-		,c.name         as cu_name
-		,c.address      as cu_address
-		,c.phone        as cu_phone
-		,od.id          as order_details_id
-		,od.amount      as amount
+		,od.id as order_details_id
+		,od.amount as amount
+		,c.id as cu_id
+		,c.name as
+		cu_name
+		,c.address as cu_address
+		,c.phone as cu_phone
+		,od.id as
+		order_details_id
+		,od.amount as amount
 		,od.products_id as pd_id
-		,od.name        as pd_name
-		,od.unitprice   as pd_unitprice
+		,od.name
+		as pd_name
+		,od.unitprice as pd_unitprice
 		FROM orders o
-		LEFT OUTER JOIN 
+		LEFT OUTER JOIN
 		(
 		SELECT
 		d.id
@@ -52,13 +61,15 @@
 		,p.name
 		,p.unitprice
 		,d.amount
-		FROM order_details d
+		FROM
+		order_details d
 		LEFT OUTER JOIN products p
 		ON (p.id = d.products_id)
-		)  od
+		) od
 		ON (o.id = od.orders_id)
 		LEFT OUTER JOIN customers c
-		ON (o.customers_id = c.id)
+		ON (o.customers_id
+		= c.id)
 		WHERE o.id = #{id}
 	</select>
 </mapper>
