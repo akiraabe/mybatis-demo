@@ -1,9 +1,9 @@
 package com.example.domain;
 
-public class OrderDetails {
+public class OrderDetail {
 	
 	private Integer id;
-	private Products products;
+	private Product product;
 	private Integer amount;
 	public Integer getId() {
 		return id;
@@ -11,11 +11,11 @@ public class OrderDetails {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Products getProducts() {
-		return products;
+	public Product getProducts() {
+		return product;
 	}
-	public void setProducts(Products products) {
-		this.products = products;
+	public void setProducts(Product product) {
+		this.product = product;
 	}
 	public Integer getAmount() {
 		return amount;
@@ -25,6 +25,6 @@ public class OrderDetails {
 	}
 	@Override
 	public String toString() {
-		return "OrderDetails [id=" + id + ", products=" + products + ", amount=" + amount + "]";
+		return "OrderDetail [id=" + id + ", product=" + product + ", amount=" + amount + "]";
 	}
 }

@@ -7,19 +7,19 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-import com.example.domain.Products;
+import com.example.domain.Product;
 
 @Mapper
-public interface ProductsMapper {
+public interface ProductMapper {
 	
 	@Insert("INSERT INTO products (name, unitPrice) VALUES (#{name}, #{unitPrice})")
 	@Options(useGeneratedKeys = true)
-	void insert(Products products);
+	void insert(Product product);
 	
 	@Select("SELECT id, name, unitPrice FROM products WHERE id = #{id}")
-	Products select(Integer id);
+	Product select(Integer id);
 	
 	@Select("SELECT id, name, unitPrice FROM products")
-	List<Products> findAll();
+	List<Product> findAll();
 
 }

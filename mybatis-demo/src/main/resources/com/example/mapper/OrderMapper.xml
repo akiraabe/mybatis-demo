@@ -2,30 +2,30 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.OrdersMapper">
+<mapper namespace="com.example.mapper.OrderMapper">
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT
 		INTO orders (order_date, customers_id ) VALUES (#{orderDate},
 		#{customers.id}
 		)
 	</insert>
-	<resultMap id="customersResult" type="com.example.domain.Customers">
+	<resultMap id="customersResult" type="com.example.domain.Customer">
 		<id property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="address" column="address" />
 		<result property="phone" column="phone" />
 	</resultMap>
-	<resultMap id="productsResult" type="com.example.domain.Products">
+	<resultMap id="productsResult" type="com.example.domain.Product">
 		<id property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="unitPrice" column="unitprice" />
 	</resultMap>
-	<resultMap id="ordersResult" type="com.example.domain.Orders">
+	<resultMap id="ordersResult" type="com.example.domain.Order">
 		<id property="id" column="id" />
 		<result property="orderDate" column="order_date" />
 		<association property="customers" resultMap="customersResult"
 			columnPrefix="cu_" />
-		<collection property="orderDetails" ofType="com.example.domain.OrderDetails">
+		<collection property="orderDetails" ofType="com.example.domain.OrderDetail">
 			<id property="id" column="order_details_id" />
 			<result property="amount" column="amount" />
 			<association property="products" resultMap="productsResult"

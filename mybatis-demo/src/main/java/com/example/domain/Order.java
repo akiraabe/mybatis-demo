@@ -3,12 +3,12 @@ package com.example.domain;
 import java.util.Date;
 import java.util.List;
 
-public class Orders {
+public class Order {
 
 	private Integer id;
 	private Date orderDate;
-	private Customers customers;
-	private List<OrderDetails> orderDetails;
+	private Customer customers;
+	private List<OrderDetail> orderDetail;
 
 	/**
 	 * sumUp grossAmount. sum(unitPrice * amount)
@@ -17,7 +17,7 @@ public class Orders {
 	 */
 	public Integer sumUp() {
 		Integer grossAmount = 0;
-		for (OrderDetails detail : this.orderDetails) {
+		for (OrderDetail detail : this.orderDetail) {
 			grossAmount += (detail.getAmount() * detail.getProducts().getUnitPrice());
 		}
 		return grossAmount;
@@ -39,25 +39,25 @@ public class Orders {
 		this.orderDate = orderDate;
 	}
 
-	public Customers getCustomers() {
+	public Customer getCustomers() {
 		return customers;
 	}
 
-	public void setCustomers(Customers customers) {
+	public void setCustomers(Customer customers) {
 		this.customers = customers;
 	}
 
-	public List<OrderDetails> getOrderDetails() {
-		return orderDetails;
+	public List<OrderDetail> getOrderDetails() {
+		return orderDetail;
 	}
 
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
-		this.orderDetails = orderDetails;
+	public void setOrderDetails(List<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
 	}
 
 	@Override
 	public String toString() {
-		return "Orders [id=" + id + ", orderDate=" + orderDate + ", customer=" + customers + ", orderDetails="
-				+ orderDetails + "]";
+		return "Order [id=" + id + ", orderDate=" + orderDate + ", customer=" + customers + ", orderDetail="
+				+ orderDetail + "]";
 	}
 }

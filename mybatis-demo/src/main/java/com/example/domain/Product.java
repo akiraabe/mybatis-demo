@@ -2,7 +2,7 @@ package com.example.domain;
 
 //import lombok.Data;
 //@Data
-public class Products {
+public class Product {
 	private Integer id;
 	private String name;
 	private Integer unitPrice;
@@ -27,7 +27,7 @@ public class Products {
 	}
 	@Override
 	public String toString() {
-		return "Products [id=" + id + ", name=" + name + ", unitPrice=" + unitPrice + "]";
+		return "Product [id=" + id + ", name=" + name + ", unitPrice=" + unitPrice + "]";
 	}
 	
 	
