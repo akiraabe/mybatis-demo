@@ -1,6 +1,6 @@
-package com.example.dto;
+package com.example.resource;
 
-public class OrderDetailDTO {
+public class OrderDetailResource {
 
 	private Integer id;
 	private String productName;

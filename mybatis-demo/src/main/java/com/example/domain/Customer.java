@@ -1,8 +1,17 @@
 package com.example.domain;
 
-//import lombok.Data;
-//@Data
-public class Customer {
+import java.io.Serializable;
+
+/**
+ * Domain object for Customer.
+ * 
+ * @author akiraabe
+ *
+ */
+public class Customer implements Serializable {
+
+	private static final long serialVersionUID = -259798521801118578L;
+	
 	private Integer id;
 	private String name;
 	private String address;

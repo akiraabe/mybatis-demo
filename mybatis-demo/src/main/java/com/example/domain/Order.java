@@ -1,9 +1,18 @@
 package com.example.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Order {
+/**
+ * Domain object for Order.
+ * 
+ * @author akiraabe
+ *
+ */
+public class Order implements Serializable {
+
+	private static final long serialVersionUID = -7805714788906609372L;
 
 	private Integer id;
 	private Date orderDate;
@@ -11,7 +20,11 @@ public class Order {
 	private List<OrderDetail> orderDetail;
 
 	/**
-	 * sumUp grossAmount. sum(unitPrice * amount)
+	 * sumUp grossAmount.
+	 *
+	 * <pre>
+	 * sum(unitPrice * amount)
+	 * </pre>
 	 * 
 	 * @return grossAmount
 	 */

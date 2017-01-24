@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.example.domain.OrderDetail;
 import com.example.domain.Order;
 
-public class OrderDTO {
+public class OrderResource {
 
 	private Integer id;
 	private String orderDate;
@@ -14,26 +14,26 @@ public class OrderDTO {
 	private String customerName;
 	private String address;
 	private String phone;
-	private List<OrderDetailDTO> orderDetailDTOList;
+	private List<OrderDetailResource> orderDetailResources;
 
-	public OrderDTO() {}
-	public OrderDTO(Order order) {
+	public OrderResource() {}
+	public OrderResource(Order order) {
 		setId(order.getId());
 		setOrderDate(order.getOrderDate().toString());
 		setGrossAmount(order.sumUp());
 		setCustomerName(order.getCustomers().getName());
 		setAddress(order.getCustomers().getAddress());
 		setPhone(order.getCustomers().getPhone());
-		List<OrderDetailDTO> orderDetailDTOList = new ArrayList<>();
+		List<OrderDetailResource> orderDetailResources = new ArrayList<>();
 		for (OrderDetail detail : order.getOrderDetails()) {
-			OrderDetailDTO odDTO = new OrderDetailDTO();
-			odDTO.setId(detail.getId());
-			odDTO.setProductName(detail.getProducts().getName());
-			odDTO.setProductAmount(detail.getAmount());
-			odDTO.setUnitPrice(detail.getProducts().getUnitPrice());
-			orderDetailDTOList.add(odDTO);
+			OrderDetailResource orderDetailResource = new OrderDetailResource();
+			orderDetailResource.setId(detail.getId());
+			orderDetailResource.setProductName(detail.getProducts().getName());
+			orderDetailResource.setProductAmount(detail.getAmount());
+			orderDetailResource.setUnitPrice(detail.getProducts().getUnitPrice());
+			orderDetailResources.add(orderDetailResource);
 		}
-		setOrderDetailDTOList(orderDetailDTOList);
+		setOrderDetailResources(orderDetailResources);
 	}
 
 	public Integer getId() {
@@ -84,12 +84,12 @@ public class OrderDTO {
 		this.phone = phone;
 	}
 
-	public List<OrderDetailDTO> getOrderDetailDTOList() {
-		return orderDetailDTOList;
+	public List<OrderDetailResource> getOrderDetailResources() {
+		return orderDetailResources;
 	}
 
-	public void setOrderDetailDTOList(List<OrderDetailDTO> orderDetailDTOList) {
-		this.orderDetailDTOList = orderDetailDTOList;
+	public void setOrderDetailResources(List<OrderDetailResource> orderDetailResources) {
+		this.orderDetailResources = orderDetailResources;
 	}
 
 }
