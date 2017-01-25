@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 package com.example.resource;
 
 public class OrderDetailResource {
-=======
-package com.example.dto;
-
-public class OrderDetailDTO {
->>>>>>> branch 'master' of https://github.com/akiraabe/mybatis-demo.git
 
 	private Integer id;
 	private String productName;
