@@ -17,4 +17,4 @@ insert into order_details values(3,2,1,120);
 insert into order_details values(4,2,3,50);
 --
 insert into order_details values(5,3,3,20);
-insert into order_details values(6,3,2,10);
+insert into order_details values(6,3,2,12);
