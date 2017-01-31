@@ -30,8 +30,10 @@ public class OrderWebController {
 		return "order/input";
 	}
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
 	public String getOrder(@PathVariable Integer id, Model model) {
+		
+		System.out.println("Id : " + id);
 		model.addAttribute("order", service.findOrderById(id));
 		return "order/show";
 	}
