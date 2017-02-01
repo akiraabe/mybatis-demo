@@ -8,6 +8,7 @@
 	<h2>Order id here!</h2>
 	<div  th:each="detail : ${orderList}" >
 	<a th:href="@{'/order/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
+	<span th:text="${#dates.format(detail.orderDate,'yyyy/MM/dd')}"></span>
 	</div>
 </body>
 </html>

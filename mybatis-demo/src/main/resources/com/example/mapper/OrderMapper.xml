@@ -72,7 +72,7 @@
 		= c.id)
 		WHERE o.id = #{id}
 	</select>
-	<select id="findAll" resultType="com.example.domain.Order">
+	<select id="findAll" resultMap="ordersResult">
         SELECT id, order_date FROM orders
     </select>
 </mapper>

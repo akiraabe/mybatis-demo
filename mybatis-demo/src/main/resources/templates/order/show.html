@@ -35,7 +35,7 @@
 			<td th:text="${detail.productName}"></td>
 			<td
 				th:text="${#numbers.formatInteger(detail.productAmount, 3, 'COMMA')}"></td>
-			<td th:text="${detail.unitPrice}"></td>
+			<td th:text="${#numbers.formatInteger(detail.unitPrice, 3, 'COMMA')}"></td>
 		</tr>
 		</table>
 	</div>

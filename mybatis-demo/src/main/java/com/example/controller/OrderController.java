@@ -11,7 +11,7 @@ import com.example.service.OrderService;
 
 /**
  * 
- * Controller class for Order.
+ * Rest Controller class for Order.
  * 
  * @author akiraabe
  *
