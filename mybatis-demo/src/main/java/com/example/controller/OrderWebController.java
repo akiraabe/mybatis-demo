@@ -27,7 +27,7 @@ public class OrderWebController {
 	public String index(Model model) {
 		
 		model.addAttribute("orderList", service.findAll());
-		return "order/input";
+		return "order/list";
 	}
 	
 	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
