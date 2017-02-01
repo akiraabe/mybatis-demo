@@ -1,6 +1,7 @@
 package com.example.resource;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.example.domain.OrderDetail;
@@ -9,7 +10,7 @@ import com.example.domain.Order;
 public class OrderResource {
 
 	private Integer id;
-	private String orderDate;
+	private Date orderDate;
 	private Integer grossAmount;
 	private String customerName;
 	private String address;
@@ -19,7 +20,7 @@ public class OrderResource {
 	public OrderResource() {}
 	public OrderResource(Order order) {
 		setId(order.getId());
-		setOrderDate(order.getOrderDate().toString()); //TODO
+		setOrderDate(order.getOrderDate());
 		setGrossAmount(order.sumUp());
 		setCustomerName(order.getCustomers().getName());
 		setAddress(order.getCustomers().getAddress());
@@ -44,11 +45,11 @@ public class OrderResource {
 		this.id = id;
 	}
 
-	public String getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 

@@ -7,17 +7,37 @@
 <body>
 	<h2>Order Show!</h2>
 	<div th:object="${order}">
-		<p th:text="*{id}"></p>
-		<p th:text="*{orderDate}"></p>
-		<p th:text="*{grossAmount}"></p>
-		<p th:text="*{customerName}"></p>
+		<table border='0'>
+			<tr>
+				<td>Id :</td>
+				<td th:text="*{id}">1</td>
+			</tr>
+			<tr>
+				<td>OrderDate :</td>
+				<td th:text="*{#dates.format(orderDate,'yyyy/MM/dd')}">2017/02/01</td>
+			</tr>
+			<tr>
+				<td>GrossAmount :</td>
+				<td th:text="*{#numbers.formatInteger(grossAmount, 3, 'COMMA')}">5,000,000</td>
+			</tr>
+			<tr>
+				<td>CustomerName : </td>
+				<td th:text="*{customerName}">Test Customer</td>
+			</tr>
+		</table>
 
+		<table border='0'>
+		<tr>
+			<th>Id</th><th>ProductName</th><th>ProductAmount</th><th>UnitPrice</th>
+		</tr>
 		<tr th:each="detail : *{orderDetailResources}">
 			<td th:text="${detail.id}"></td>
 			<td th:text="${detail.productName}"></td>
-			<td th:text="${detail.productAmount}"></td>
+			<td
+				th:text="${#numbers.formatInteger(detail.productAmount, 3, 'COMMA')}"></td>
 			<td th:text="${detail.unitPrice}"></td>
 		</tr>
+		</table>
 	</div>
 
 </body>

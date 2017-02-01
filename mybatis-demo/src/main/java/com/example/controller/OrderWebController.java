@@ -1,14 +1,12 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.resource.OrderResource;
 import com.example.service.OrderService;
 
 /**
@@ -26,7 +24,9 @@ public class OrderWebController {
 	OrderService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String index() {
+	public String index(Model model) {
+		
+		model.addAttribute("orderList", service.findAll());
 		return "order/input";
 	}
 	
