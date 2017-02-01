@@ -19,7 +19,7 @@ public class OrderResource {
 	public OrderResource() {}
 	public OrderResource(Order order) {
 		setId(order.getId());
-		setOrderDate(order.getOrderDate().toString());
+		setOrderDate(order.getOrderDate().toString()); //TODO
 		setGrossAmount(order.sumUp());
 		setCustomerName(order.getCustomers().getName());
 		setAddress(order.getCustomers().getAddress());

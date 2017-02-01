@@ -6,6 +6,19 @@
 </head>
 <body>
 	<h2>Order Show!</h2>
+	<div th:object="${order}">
+		<p th:text="*{id}"></p>
+		<p th:text="*{orderDate}"></p>
+		<p th:text="*{grossAmount}"></p>
+		<p th:text="*{customerName}"></p>
+
+		<tr th:each="detail : *{orderDetailResources}">
+			<td th:text="${detail.id}"></td>
+			<td th:text="${detail.productName}"></td>
+			<td th:text="${detail.productAmount}"></td>
+			<td th:text="${detail.unitPrice}"></td>
+		</tr>
+	</div>
 
 </body>
 </html>
