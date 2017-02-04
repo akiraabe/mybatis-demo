@@ -13,6 +13,7 @@ public class OrderDetail implements Serializable {
 	private static final long serialVersionUID = -2242101628684039986L;
 
 	private Integer id;
+	private Integer orderId;
 	private Product product;
 	private Integer amount;
 
@@ -22,6 +23,14 @@ public class OrderDetail implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
 	}
 
 	public Product getProducts() {

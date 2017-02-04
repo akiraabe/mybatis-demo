@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Order domain</title>
+</head>
+<body>
+	<h2>Input Order!</h2>
+	<form th:action="@{/order/create}" th:object="${orderCreateForm}"
+		method="POST">
+
+		<div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+			<p th:text="#{common.error}">ErrorMessage</p>
+		</div>
+		<div class="form-group">
+			<label for="orderDate">Order Date <span
+				th:if="${#fields.hasErrors('orderDate')}" class="text-danger"
+				th:errors="*{orderDate}">Error</span>
+			</label> <input type="text" class="form-control" id="orderDate"
+				name="orderDate" th:field="*{orderDate}" placeholder="OrderDate" />
+		</div>
+		<div>
+			<select name="customer">
+				<option th:each="customer : ${customers}" th:value="${customer.id}"
+					th:selected="${customer.id == id}" th:inline="text">[[${customer.name}]]</option>
+			</select>
+		</div>
+
+		<br />
+		<div>
+			<span>Product[1]</span><br /> <select name="product1">
+				<option th:each="product : ${products}" th:value="${product.id}"
+					th:selected="${product.id == id}" th:inline="text">[[${product.name}]]</option>
+			</select> <label for="amount1">amount</label> <input type="text"
+				class="form-control" id="orderAmount1" name="orderAmount1"
+				th:field="*{orderAmount1}" placeholder="OrderAmount1" />
+		</div>
+
+		<br />
+		<div>
+			<span>Product[2]</span><br /> <select name="product2">
+				<option th:each="product : ${products}" th:value="${product.id}"
+					th:selected="${product.id == id}" th:inline="text">[[${product.name}]]</option>
+			</select> <label for="amount2">amount</label> <input type="text"
+				class="form-control" id="orderAmount1" name="orderAmount2"
+				th:field="*{orderAmount2}" placeholder="OrderAmount2" />
+		</div>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="reset" class="btn">Reset</button>
+		</div>
+	</form>
+
+</body>
+</html>

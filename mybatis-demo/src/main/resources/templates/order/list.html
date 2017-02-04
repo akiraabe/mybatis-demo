@@ -10,5 +10,8 @@
 	<a th:href="@{'/order/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
 	<span th:text="${#dates.format(detail.orderDate,'yyyy/MM/dd')}"></span>
 	</div>
+	<div>
+	<a th:href="@{'/order/input'}">New Order</a>
+	</div>
 </body>
 </html>
