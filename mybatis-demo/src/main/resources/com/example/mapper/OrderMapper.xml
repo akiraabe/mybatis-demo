@@ -35,44 +35,52 @@
 	</resultMap>
 	<select id="selectOrder" resultMap="ordersResult">
 		SELECT
-		o.id
-		,o.order_date
-		,od.id as order_details_id
-		,od.amount as amount
-		,c.id as cu_id
-		,c.name as
-		cu_name
-		,c.address as cu_address
-		,c.phone as cu_phone
-		,od.id as
-		order_details_id
-		,od.amount as amount
-		,od.products_id as pd_id
-		,od.name
-		as pd_name
-		,od.unitprice as pd_unitprice
-		FROM orders o
-		LEFT OUTER JOIN
-		(
-		SELECT
-		d.id
-		,d.orders_id
-		,d.products_id
-		,p.name
-		,p.unitprice
-		,d.amount
+		  o.id
+		  ,o.order_date
+		  ,od.id AS order_details_id
+		  ,od.amount AS amount
+		  ,c.id AS cu_id
+		  ,c.name AS cu_name
+		  ,c.address AS cu_address
+		  ,c.phone AS cu_phone
+		  ,od.id AS	order_details_id
+	 	  ,od.amount AS amount
+		  ,od.products_id AS pd_id
+		  ,od.name AS pd_name
+		  ,od.unitprice AS pd_unitprice
 		FROM
-		order_details d
-		LEFT OUTER JOIN products p
-		ON (p.id = d.products_id)
-		) od
-		ON (o.id = od.orders_id)
+		  orders o
+		LEFT OUTER JOIN
+		  (
+		    SELECT
+		      d.id
+		      ,d.orders_id
+		      ,d.products_id
+		      ,p.name
+		      ,p.unitprice
+		      ,d.amount
+		    FROM
+		      order_details d
+		    LEFT OUTER JOIN products p
+		      ON (p.id = d.products_id)
+		  ) od
+		  ON (o.id = od.orders_id)
 		LEFT OUTER JOIN customers c
-		ON (o.customers_id
-		= c.id)
+		  ON (o.customers_id = c.id)
 		WHERE o.id = #{id}
 	</select>
 	<select id="findAll" resultMap="ordersResult">
-        SELECT id, order_date FROM orders
+        SELECT
+           o.id
+           ,o.order_date
+           ,c.id         AS cu_id
+		   ,c.name       AS cu_name
+           ,c.address    AS cu_address
+		   ,c.phone      AS cu_phone
+        FROM orders o
+        LEFT OUTER JOIN customers c
+		ON (
+		     o.customers_id = c.id
+		   )
     </select>
 </mapper>
