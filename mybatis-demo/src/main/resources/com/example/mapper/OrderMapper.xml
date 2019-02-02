@@ -28,7 +28,7 @@
 		<collection property="orderDetails" ofType="com.example.domain.OrderDetail">
 			<id property="id" column="order_details_id" />
 			<result property="amount" column="amount" />
-			<association property="products" resultMap="productsResult"
+			<association property="product" resultMap="productsResult"
 				columnPrefix="pd_" />
 		</collection>
 

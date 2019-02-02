@@ -1,5 +1,8 @@
 package com.example.domain;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +11,8 @@ import java.io.Serializable;
  * @author akiraabe
  *
  */
+@Data
+@ToString
 public class OrderDetail implements Serializable {
 
 	private static final long serialVersionUID = -2242101628684039986L;
@@ -16,41 +21,4 @@ public class OrderDetail implements Serializable {
 	private Integer orderId;
 	private Product product;
 	private Integer amount;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
-
-	public Product getProducts() {
-		return product;
-	}
-
-	public void setProducts(Product product) {
-		this.product = product;
-	}
-
-	public Integer getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderDetail [id=" + id + ", product=" + product + ", amount=" + amount + "]";
-	}
 }

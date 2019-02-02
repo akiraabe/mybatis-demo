@@ -92,10 +92,10 @@ public class OrderWebController {
 		Customer customer = customerMapper.select(Integer.parseInt(form.getCustomer()));
 		List<OrderDetail> orderDetails = new ArrayList<>();
 		OrderDetail od1 = new OrderDetail();
-		od1.setProducts(productMapper.select(Integer.parseInt(form.getProduct1())));
+		od1.setProduct(productMapper.select(Integer.parseInt(form.getProduct1())));
 		od1.setAmount(Integer.parseInt(form.getOrderAmount1()));
 		OrderDetail od2 = new OrderDetail();
-		od2.setProducts(productMapper.select(Integer.parseInt(form.getProduct2())));
+		od2.setProduct(productMapper.select(Integer.parseInt(form.getProduct2())));
 		od2.setAmount(Integer.parseInt(form.getOrderAmount2()));
 		orderDetails.add(od1);
 		orderDetails.add(od2);
