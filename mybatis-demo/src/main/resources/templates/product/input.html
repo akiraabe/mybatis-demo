@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Product domain</title>
+</head>
+<body>
+	<h2>Input Product!</h2>
+	<form th:action="@{/product/create}" th:object="${product}"
+		method="POST">
+
+		<div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+			<p th:text="#{common.error}">ErrorMessage</p>
+		</div>
+		<div class="form-group">
+			<label for="name">Name <span
+				th:if="${#fields.hasErrors('name')}" class="text-danger"
+				th:errors="*{name}">Error</span>
+			</label> <input type="text" class="form-control" id="name"
+				name="name" th:field="*{name}" placeholder="ProductName" />
+		</div>
+		<br />
+
+		<div class="form-group">
+			<label for="unitPrice">UnitPrice <span
+					th:if="${#fields.hasErrors('unitPrice')}" class="text-danger"
+					th:errors="*{unitPrice}">Error</span>
+			</label> <input type="text" class="form-control" id="unitPrice"
+							name="unitPrice" th:field="*{unitPrice}" placeholder="UnitPrice" />
+		</div>
+		<br />
+
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="reset" class="btn">Reset</button>
+		</div>
+	</form>
+
+</body>
+</html>
